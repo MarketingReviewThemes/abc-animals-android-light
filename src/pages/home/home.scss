@@ -1,3 +1,118 @@
 page-home {
+    .content {
+        background: #FFC107;
+    }
+    .scroll-content {
+        padding: 0 16px;
+    }
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
 
+        @media (orientation : landscape) {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    .full-card {
+        position: relative;
+        width: 80%;
+        height: 32vh;
+        margin: 0 auto;
+        text-align: center;
+
+        img {
+            width: 80%;
+            height: auto;
+        }
+
+        @media (orientation : landscape) {
+            flex-basis: 30%;
+            width: 100%;
+            height: auto;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    .preview-set {
+        display: flex;
+        flex-direction: row;
+        height: 68vh;
+        justify-content: center;
+        align-items: flex-start;
+        align-content: flex-end;
+        flex-wrap: wrap;
+        position: relative;
+        padding: 0 0 20px 0;
+
+        .preloader {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background: #FFC107;
+            top: 0;
+            left: 0;
+        }
+
+        @media (orientation : landscape) {
+            flex-basis: 60%;
+            height: auto;
+        }
+
+        &__img {
+            border-radius: 10px;
+            border: 1px solid rgba(234, 134, 4, 0.65);
+            margin: 0 0.5% 1% 0.5%;
+            background: rgba(251, 250, 190, 0.62);
+            flex-basis: 19%;
+
+            &.selected {
+                background: rgba(234, 134, 4, 0.65);
+                animation-name: button-clicked-animation;
+                animation-duration: 0.3s;
+            }
+
+            @media (min-width: 560px) and
+            (orientation : landscape) {
+                flex-basis: 15%;
+            }
+            @media (min-width: 600px) and (orientation: portrait) {
+                flex-basis: 15%;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+.more-button {
+    position: absolute;
+    width: 35px;
+    bottom: 0;
+    z-index: 10;
+    left: 80%;
+
+    animation: pulse 5s infinite;
+
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+
+
+@keyframes button-clicked-animation {
+    0%   { transform: scale(0.8); }
+    100%   { transform: scale(1); }
 }

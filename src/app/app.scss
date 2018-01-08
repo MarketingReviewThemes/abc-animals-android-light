@@ -14,3 +14,177 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+//App background
+.content-ios, .content-md {
+    background: #FFC107;
+}
+
+
+//Menu button
+.toggle-button {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    display: block;
+    cursor: pointer;
+    outline: none !important;
+    width: 50px;
+    background: transparent;
+    z-index: 100;
+
+    @media (min-width: 900px) {
+        width: 70px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        margin: 10px;
+    }
+
+    &:active, &:focus {
+        background: transparent;
+    }
+}
+
+@media (min-width: 342px) {
+    .menu-inner {
+        width: 80%;
+        min-width: 320px;
+        max-width: 440px;
+    }
+}
+
+
+.button-ios, .button-md {
+    background: transparent;
+    box-shadow: none;
+
+    &.activated {
+        box-shadow: none;
+    }
+}
+.ion-ios-menu:before {
+    color: #000;
+}
+
+
+
+// FOR CHILDREN left-handed
+.left-handed {
+    .gallery {
+        @media (orientation : landscape) {
+            flex-direction: row-reverse;
+            padding: 0 0 0 50px;
+        }
+    }
+    .preview-set {
+        @media (orientation : landscape) and (min-width: 700px) {
+            padding: 0 0 0 30px;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .logo {
+        width: 30%;
+        height: 60px;
+        background: url("../assets/imgs/name.svg") left center no-repeat;
+        background-size: contain;
+        margin: 0 5px 0 0;
+    }
+
+    .contacts {
+        width: 70%;
+        height: 60px;
+        padding: 10px 0 0 0;
+
+        p {
+            margin: 5px 0 0 0;
+            font-size: 11px;
+        }
+    }
+}
+
+.settings {
+
+    color: #b64900;
+
+    ion-toggle {
+        //width: 65px;
+    }
+    .toggle-icon {
+        background: #e2e2e2;
+    }
+    
+    .toggle-checked .toggle-icon {
+        background: #b64900;
+    }
+    .toggle-icon:before {
+        background: #fdc51a;
+    }
+    .toggle-inner {
+        background: #ff9a22;
+    }
+
+    .toggle-md.toggle-checked .toggle-inner {
+        background: #ff9a22;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin: 20px 0 5px 0;
+        text-transform: uppercase;
+        color: #d57b02;
+    }
+
+    &__area {
+        padding: 10px;
+        border: 1px solid #f5b02e;
+        border-radius: 6px;
+        background: #fdc51a;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        strong {
+            font-size: 1.5rem;
+            padding: 0 10px 0 0;
+        }
+        p {
+            font-size: 1.2rem;
+            padding: 5px 0 0 0;
+            margin: 0;
+            color: #ec660c;
+            font-style: italic;
+        }
+
+        
+    }
+}
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    40% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.3) rotate(-10deg);
+    }
+    90% {
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+}

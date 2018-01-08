@@ -1,18 +1,29 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<!--<ion-content class="left-handed">-->
+<ion-content>
+  <button class="toggle-button" menuToggle>
+    <img src="assets/imgs/button_setting.svg">
+  </button>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <div class="gallery">
+    <div class="full-card"
+         [ngClass]="{selectedFull: dataShare.currentLetter.id}"
+         (click)="gotoLetterDetailsPage()">
+      <img src="{{'assets/imgs/' + dataShare.currentLetter.id + '.svg'}}">
+      <div class="more-button">
+        <img src="assets/imgs/button_find.svg">
+      </div>
+    </div>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <div class="preview-set">
+      <div class="preloader" *ngIf="!showLettersSet"></div>
+      <div class="preview-set__img" *ngFor="let preview of dataShare.abcSet"
+           (click)="setCurrentLetter($event)"
+           [ngClass]="{selected: preview.id == dataShare.currentLetter.id}">
+        <img src="{{'assets/imgs/' + preview.id + '.svg'}}" alt="{{preview.id}}" title="{{preview.name}}">
+      </div>
+    </div>
+  </div>
+
+
 </ion-content>

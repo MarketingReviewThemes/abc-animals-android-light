@@ -1,34 +1,40 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import {ABCAnimals} from './app.component';
+import {HomePage} from '../pages/home/home';
+import { LetterDetailsPage } from '../pages/letter-details/letter-details';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import { NativeAudio } from '@ionic-native/native-audio';
+import { DataShareProvider } from '../providers/data-share/data-share';
 
 @NgModule({
   declarations: [
-    MyApp,
+    ABCAnimals,
     HomePage,
-    ListPage
+    LetterDetailsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(ABCAnimals),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    ABCAnimals,
     HomePage,
-    ListPage
+    LetterDetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    NativeAudio,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataShareProvider
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -1,19 +1,36 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
+  <ion-content padding class="settings">
+
+
+    <div class="header">
+        <div class="logo"></div>
+        <div class="contacts">
+            <p class="contacts__item">Email: tretanagames@gmail.com</p>
+            <p class="contacts__item">Skype: tretanas</p>
+        </div>
+    </div>
+
+    <h3>Settings</h3>
+    <div class="settings__area">
+      <div>
+          <strong>Left-handed interface</strong>
+          <p>Will be more convenient for left-handed child</p>
+      </div>
+        <ion-toggle [(ngModel)]="leftHandedToggle" onchange="toggleInterface()"></ion-toggle>
+    </div>
+
+
+
+    <!--<ion-list>-->
+    <!--<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">-->
+    <!--{{p.title}}-->
+    <!--</button>-->
+    <!--</ion-list>-->
   </ion-content>
 
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false" class="root-element"
+         [ngClass]="{'left-handed' : leftHandedToggle == true}"></ion-nav>

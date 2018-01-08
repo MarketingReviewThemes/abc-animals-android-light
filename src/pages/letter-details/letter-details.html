@@ -1,0 +1,27 @@
+<!--
+  Generated template for the LetterDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding class="details">
+  <div class="details__back" (click)="gotoBack()">
+    <img src="assets/imgs/button_home.svg">
+  </div>
+  <div class="details__full-image">
+    <img src="{{'assets/imgs/' + dataShare.currentLetter.id + '.svg'}}" (click)="playAudio()">
+  </div>
+  <div class="details__title">{{dataShare.currentLetter.name}}</div>
+</ion-content>
+<ion-footer class="footer">
+  <div class="footer__prev">
+    <div (click)="gotoPrev()" *ngIf="prevButton"><img src="assets/imgs/button_left.svg"></div>
+  </div>
+  <div class="footer__play" (click)="dataShare.playAnimalAudio()">
+    <img src="assets/imgs/button_play.svg">
+  </div>
+  <div class="footer__next">
+    <div (click)="gotoNext()" *ngIf="nextButton"><img src="assets/imgs/button_right.svg"></div>
+  </div>
+</ion-footer>
