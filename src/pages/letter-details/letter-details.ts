@@ -16,17 +16,11 @@ import {DataShareProvider} from '../../providers/data-share/data-share';
     templateUrl: 'letter-details.html',
 })
 export class LetterDetailsPage {
-    public nextButton: boolean = true;
-    public prevButton: boolean = true;
-
 
     constructor(public navCtrl: NavController, public dataShare: DataShareProvider, public platform: Platform) {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad LetterDetailsPage');
-        this.checkNextButton();
-        this.checkPrevButton();
         this.dataShare.unloadAllLetters();
     }
 
@@ -37,31 +31,24 @@ export class LetterDetailsPage {
 
     playAudio() {
         this.dataShare.playLetterAudio();
-
-        // if (this.platform.is('android')) {
-        //     setTimeout(() => {
-        //         this.dataShare.unloadAllLetters();
-        //     }, 5000);
-        // }
-
     }
 
 
     gotoPrev() {
         this.dataShare.unloadAllLetters();
 
-        for (let i = 0; i <= this.dataShare.abcSet.length; i++) {
-            this.nextButton = true;
+        for(let i = 0; i <= this.dataShare.abcSet.length; i++) {
 
-            if (this.dataShare.currentLetter.id == this.dataShare.abcSet[i].id) {
+            if(this.dataShare.currentLetter.id == this.dataShare.abcSet[i].id) {
+                
+                if(this.dataShare.currentLetter.id == "a") i = this.dataShare.abcSet.length;
+
                 this.dataShare.currentLetter.id = this.dataShare.abcSet[i - 1].id;
                 this.dataShare.currentLetter.name = this.dataShare.abcSet[i - 1].name;
-
-                //If first letter
-                this.checkPrevButton();
                 this.playAudio();
                 break;
             }
+
         }
     }
 
@@ -69,30 +56,18 @@ export class LetterDetailsPage {
     gotoNext() {
         this.dataShare.unloadAllLetters();
 
-        for (let i = 0; i <= this.dataShare.abcSet.length; i++) {
-            this.prevButton = true;
+        for(let i = 0; i <= this.dataShare.abcSet.length; i++) {
 
-            if (this.dataShare.currentLetter.id == this.dataShare.abcSet[i].id) {
-                this.dataShare.currentLetter.id = this.dataShare.abcSet[i + 1].id;
-                this.dataShare.currentLetter.name = this.dataShare.abcSet[i + 1].name;
+            if(this.dataShare.currentLetter.id == this.dataShare.abcSet[i].id) {
 
                 //If last letter
-                this.checkNextButton();
+                if(this.dataShare.currentLetter.id == "z") i = -1;
+
+                this.dataShare.currentLetter.id = this.dataShare.abcSet[i + 1].id;
+                this.dataShare.currentLetter.name = this.dataShare.abcSet[i + 1].name;
                 this.playAudio();
                 break;
             }
-        }
-    }
-
-    checkPrevButton() {
-        if (this.dataShare.currentLetter.id == "a") {
-            this.prevButton = false;
-        }
-    }
-
-    checkNextButton() {
-        if (this.dataShare.currentLetter.id == "z") {
-            this.nextButton = false;
         }
     }
 
