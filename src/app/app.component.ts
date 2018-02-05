@@ -5,6 +5,8 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {HomePage} from '../pages/home/home';
 import {LetterDetailsPage} from '../pages/letter-details/letter-details';
+import { Market } from '@ionic-native/market';
+
 
 @Component({
     templateUrl: 'app.html'
@@ -18,7 +20,10 @@ export class ABCAnimals {
 
     pages: Array<{title: string, component: any}>;
 
-    constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+    constructor(public platform: Platform,
+                public statusBar: StatusBar,
+                public splashScreen: SplashScreen,
+                public market: Market) {
         this.initializeApp();
 
         // used for an example of ngFor and navigation
@@ -26,6 +31,10 @@ export class ABCAnimals {
             {title: 'Home', component: HomePage}
         ];
 
+    }
+
+    goToFullVersion() {
+        this.market.open('tretana.games');
     }
 
     initializeApp() {

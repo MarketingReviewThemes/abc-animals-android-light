@@ -10,6 +10,7 @@ import { LetterDetailsPage } from '../pages/letter-details/letter-details';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { Market } from '@ionic-native/market';
 import { DataShareProvider } from '../providers/data-share/data-share';
 
 @NgModule({
@@ -32,6 +33,7 @@ import { DataShareProvider } from '../providers/data-share/data-share';
     StatusBar,
     SplashScreen,
     NativeAudio,
+    Market,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataShareProvider
   ]
